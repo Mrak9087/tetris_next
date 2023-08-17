@@ -36,3 +36,45 @@ export const checkCollision = (
 
   return true;
 };
+
+export const newStage = (stage: number[][], player: TPlayer | null) => {
+  let copyStage = createStage();
+  let deletedRowCount = 0;
+
+  for (let y = 0; y < stage.length; y++) {
+    for (let x = 0; x < stage[0].length; x++) {
+      if (stage[y][x] === 2) {
+        copyStage[y][x] = 2;
+      }
+    }
+  }
+
+  player?.figure?.forEach((row, rIdx) => {
+    row.forEach((cell, cIdx) => {
+      if (cell) {
+        copyStage[rIdx + player.pos.y][cIdx + player.pos.x] = cell;
+      }
+    });
+  });
+
+  if (player?.isCollision) {
+    player.figure?.forEach((row, rIdx) => {
+      row.forEach((cell, cIdx) => {
+        if (cell) {
+          copyStage[rIdx + player.pos.y][cIdx + player.pos.x] = 2;
+        }
+      });
+    });
+
+    copyStage = copyStage.reduce((acc: number[][], row) => {
+      if (Math.min(...row) === 2) {
+        acc.unshift(new Array(copyStage[0].length).fill(0));
+        deletedRowCount++;
+        return acc;
+      }
+      acc.push(row);
+      return acc;
+    }, []);
+  }
+  return { copyStage, deletedRowCount };
+};
