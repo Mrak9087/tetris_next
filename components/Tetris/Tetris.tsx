@@ -4,6 +4,7 @@ import View from "../View";
 import { useTetris } from "@/hooks/useTetris";
 import { checkCollision, createStage } from "@/helpers/helpers";
 import { useState } from "react";
+import { useGameInfo } from "@/hooks/useGameInfo";
 
 const Tetris = () => {
   const [gameOver, setGameOver] = useState(false);
@@ -11,9 +12,14 @@ const Tetris = () => {
   const { player, updatePlayerPos, resetPlayer, rotatePlayer, setCollision } =
     usePlayer();
   const { stage, setStage, deletedRow } = useTetris(player, resetPlayer);
+  const { score, setScore, rows, setRows, level, setLevel } =
+    useGameInfo(deletedRow);
 
   const startGame = () => {
     setStage(createStage());
+    setScore(0);
+    setLevel(0);
+    setRows(0);
     resetPlayer();
     setGameOver(false);
   };
@@ -25,6 +31,10 @@ const Tetris = () => {
   };
 
   const movePlayerY = (dir: number) => {
+    if (rows > (level + 1) * 10) {
+      setLevel((prev) => prev + 1);
+    }
+
     if (checkCollision(stage, player, 0, dir)) {
       updatePlayerPos(0, dir, false);
     } else {
