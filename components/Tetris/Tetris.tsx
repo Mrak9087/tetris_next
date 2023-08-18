@@ -7,8 +7,10 @@ import { checkCollision, createStage } from "@/helpers/helpers";
 import { useState } from "react";
 import { useGameInfo } from "@/hooks/useGameInfo";
 import Info from "../Info";
+import { useInterval } from "@/hooks/useInterval";
 
 const Tetris = () => {
+  const [dropTime, setDropTime] = useState(0);
   const [gameOver, setGameOver] = useState(false);
 
   const { player, updatePlayerPos, resetPlayer, rotatePlayer, setCollision } =
@@ -22,6 +24,7 @@ const Tetris = () => {
     setScore(0);
     setLevel(0);
     setRows(0);
+    setDropTime(1000);
     resetPlayer();
     setGameOver(false);
   };
@@ -35,6 +38,7 @@ const Tetris = () => {
   const movePlayerY = (dir: number) => {
     if (rows > (level + 1) * 10) {
       setLevel((prev) => prev + 1);
+      setDropTime(1000 / (level + 1) + 200);
     }
 
     if (checkCollision(stage, player, 0, dir)) {
@@ -64,6 +68,10 @@ const Tetris = () => {
       }
     }
   };
+
+  useInterval(() => {
+    movePlayerY(1);
+  }, dropTime);
 
   return (
     <div
