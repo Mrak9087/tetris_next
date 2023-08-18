@@ -1,3 +1,4 @@
+"use client";
 import { usePlayer } from "@/hooks/usePlayer";
 import TetrisWrapper from "../TetrisWrapper";
 import View from "../View";
