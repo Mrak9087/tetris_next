@@ -7,11 +7,20 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens:{
+      "sm": "768px",
+      "md": "1024px",
+      "lg": "1440px",
+      "xl": "2560px",
+    },
     extend: {
       gridTemplateRows: {
         "20": "repeat(20, calc(25vw/12))",
-        "4x": "repeat(4, calc(5vw/4))",
+        "4x": "repeat(4, calc(4vw/3))",
       },
+      gridTemplateColumns:{
+        "4x": "repeat(4, calc(4vw/3))"
+      }
     },
   },
   plugins: [],

@@ -52,18 +52,21 @@ const Tetris = () => {
   };
 
   const handlerKeyDown = (e: React.KeyboardEvent) => {
-    e.preventDefault();
     if (!gameOver) {
-      if (e.keyCode === 37) {
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
         movePlayerX(-1);
       }
-      if (e.keyCode === 39) {
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
         movePlayerX(1);
       }
-      if (e.keyCode === 40) {
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
         movePlayerY(1);
       }
-      if (e.keyCode === 38) {
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
         rotatePlayer(stage);
       }
     }

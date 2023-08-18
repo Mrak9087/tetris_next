@@ -41,6 +41,7 @@ export const usePlayer = () => {
     }
   
     const rotate = (matrix:number[][]) => {
+      if(!matrix) return; 
       const rotatedFigure = [];
       let rows = matrix.length;
       let cols = matrix[0].length;
