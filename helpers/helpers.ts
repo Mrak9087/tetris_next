@@ -3,6 +3,12 @@ import { TPlayer } from "./types";
 export const VIEW_WIDTH = 12;
 export const VIEW_HEIGHT = 20;
 
+export const infoStage = (): number[][] => {
+  return Array.from(Array(4), () => {
+    return new Array(4).fill(0);
+  });
+};
+
 export const createStage = (): number[][] => {
   return Array.from(Array(VIEW_HEIGHT), () => {
     return new Array(VIEW_WIDTH).fill(0);

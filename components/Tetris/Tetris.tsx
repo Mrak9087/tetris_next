@@ -5,6 +5,7 @@ import { useTetris } from "@/hooks/useTetris";
 import { checkCollision, createStage } from "@/helpers/helpers";
 import { useState } from "react";
 import { useGameInfo } from "@/hooks/useGameInfo";
+import Info from "../Info";
 
 const Tetris = () => {
   const [gameOver, setGameOver] = useState(false);
@@ -71,6 +72,14 @@ const Tetris = () => {
     >
       <TetrisWrapper>
         <View stage={stage} />
+        <aside>
+          <Info
+            level={level}
+            score={score}
+            gameOver={gameOver}
+            nextFigure={player.nextFigure}
+          />
+        </aside>
       </TetrisWrapper>
     </div>
   );
