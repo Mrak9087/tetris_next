@@ -12,3 +12,5 @@ export const Cell = React.memo(({ type }:ICell) => {
     ></div>
   );
 });
+
+Cell.displayName = "Cell";
