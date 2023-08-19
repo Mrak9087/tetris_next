@@ -20,7 +20,7 @@ const Info = ({ score, level, nextFigure, gameOver }: IInfo) => {
   }, [nextFigure]);
 
   return (
-    <div className="text-gray-400 text-lg font-bold border-2 lg:border-4 rounded-md h-auto w-[calc(105vw/10)]  border-gray-300 p-1">
+    <div className="text-gray-400 text-lg font-bold border-2 lg:border-4 rounded-md h-auto border-gray-300 p-1">
       <div className="flex justify-center">
         <div className="grid gap-px grid-rows-4x grid-cols-4x mx-auto">
           {figure.map((row, ridx) => {

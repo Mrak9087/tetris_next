@@ -8,9 +8,10 @@ import { useState } from "react";
 import { useGameInfo } from "@/hooks/useGameInfo";
 import Info from "../Info";
 import { useInterval } from "@/hooks/useInterval";
+import ButtonStart from "../ButtonStart";
 
 const Tetris = () => {
-  const [dropTime, setDropTime] = useState(0);
+  const [dropTime, setDropTime] = useState<number | null>(null);
   const [gameOver, setGameOver] = useState(false);
 
   const { player, updatePlayerPos, resetPlayer, rotatePlayer, setCollision } =
@@ -46,6 +47,7 @@ const Tetris = () => {
     } else {
       if (player.pos.y < 1) {
         setGameOver(true);
+        setDropTime(null);
       }
       setCollision();
     }
@@ -57,11 +59,11 @@ const Tetris = () => {
         e.preventDefault();
         movePlayerX(-1);
       }
-      if (e.key === "ArrowLeft") {
+      if (e.key === "ArrowRight") {
         e.preventDefault();
         movePlayerX(1);
       }
-      if (e.key === "ArrowRight") {
+      if (e.key === "ArrowDown") {
         e.preventDefault();
         movePlayerY(1);
       }
@@ -84,13 +86,15 @@ const Tetris = () => {
     >
       <TetrisWrapper>
         <View stage={stage} />
-        <aside>
+        <aside className="flex flex-col gap-y-5 w-[calc(105vw/10)]">
           <Info
             level={level}
             score={score}
             gameOver={gameOver}
             nextFigure={player.nextFigure}
           />
+
+          <ButtonStart callback={startGame} />
         </aside>
       </TetrisWrapper>
     </div>
