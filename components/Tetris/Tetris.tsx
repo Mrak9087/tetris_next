@@ -86,7 +86,7 @@ const Tetris = () => {
     >
       <TetrisWrapper>
         <View stage={stage} />
-        <aside className="flex flex-col gap-y-5 w-[calc(105vw/10)]">
+        <aside className="flex flex-col gap-y-5 w-[calc(105vw/10)] min-w-[82px] overflow-hidden">
           <Info
             level={level}
             score={score}
