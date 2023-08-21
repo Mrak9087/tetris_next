@@ -84,3 +84,21 @@ export const newStage = (stage: number[][], player: TPlayer | null) => {
   }
   return { copyStage, deletedRowCount };
 };
+
+export const beforeResetPlayer = (stage: number[][]) => {
+  let copyStage = createStage();
+  let isEmpty = false;
+  for (let y = stage.length-1; y >= 0; y--) {
+    for (let x = 0; x < stage[y].length; x++) {
+      if(isEmpty) {
+        copyStage[y][x] = 0;
+        continue;
+      } 
+      copyStage[y][x] = stage[y][x];
+    }
+    if (y > 0 && !copyStage[y].includes(1) && !copyStage[y].includes(2)) {
+      isEmpty = true;
+    }
+  }
+  return copyStage 
+}

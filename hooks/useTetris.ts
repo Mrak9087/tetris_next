@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { createStage, newStage } from "../helpers/helpers";
+import { beforeResetPlayer, createStage, newStage } from "../helpers/helpers";
 import { TPlayer } from "@/helpers/types";
 
 export const useTetris = (player:TPlayer | null, resetPlayer:()=>void) => {
@@ -7,14 +7,16 @@ export const useTetris = (player:TPlayer | null, resetPlayer:()=>void) => {
   const [deletedRow, setDeletedRow] = useState(0);
 
   useEffect(() => {
-    const {copyStage, deletedRowCount} = newStage(stage, player);
+    let {copyStage, deletedRowCount} = newStage(stage, player);
     
+    if(player?.isCollision) {
+      copyStage =  beforeResetPlayer(copyStage);
+      resetPlayer();
+    }
+
     setDeletedRow(deletedRowCount)
     setStage(copyStage);
 
-    if(player?.isCollision) {
-      resetPlayer();
-    }
     return () => {
       player = null;
     }
