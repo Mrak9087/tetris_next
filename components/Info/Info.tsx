@@ -24,8 +24,8 @@ const Info = ({ score, level, nextFigure, gameOver }: IInfo) => {
         {level}
       </div>
       {gameOver && (
-        <div className="text-red-600 border-t-2 border-gray-500 p-2">
-          Game Over!!
+        <div className="text-red-600 border-t-2 border-gray-500 p-2 text-xs md:text-sm lg:text-base xl:text-xl text-center">
+          Конец игры!
         </div>
       )}
     </div>
