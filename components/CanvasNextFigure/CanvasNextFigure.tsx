@@ -16,29 +16,26 @@ const CanvasNextFigure = ({ next }: ICanvasNextFigure) => {
   useEffect(() => {
     if (next) {
       if (canvasRef) {
-        console.log('canvas')
-        let ctx = canvasRef.current?.getContext('2d');
+        let ctx = canvasRef.current?.getContext("2d");
+        ctx!.fillStyle = "rgb(0, 0, 0)";
         let w = canvasRef.current!.width / 4;
         let h = canvasRef.current!.height / 4;
-        ctx!.lineWidth=2;
-        ctx!.strokeStyle= '#e5e7eb';
-        ctx!.fillStyle = 'rgb(0, 0, 0)';
-        ctx!.fillRect(0, 0, canvasRef.current!.width, canvasRef.current!.height);
+        ctx!.fillRect(
+          0,
+          0,
+          canvasRef.current!.width,
+          canvasRef.current!.height
+        );
 
         for (let y = 0; y < next.length; y++) {
-            for (let x = 0; x < next[y].length; x++) {
-                if (next[y][x]) {
-                    ctx!.fillStyle = 'rgb(107, 114, 128)';
-                    // ctx!.rect(x * w, y * h, w, h);
-                    // ctx!.fill();
-                    // ctx!.stroke();
-                    
-                } else {
-                    ctx!.fillStyle = 'rgb(0, 0, 0)';
-                }
-                ctx!.fillRect(x * w, y * h, w, h);
-
+          for (let x = 0; x < next[y].length; x++) {
+            if (next[y][x]) {
+              ctx!.fillStyle = "rgb(107, 114, 128)";
+            } else {
+              ctx!.fillStyle = "rgb(0, 0, 0)";
             }
+            ctx!.fillRect(x * w, y * h, w, h);
+          }
         }
       }
     }

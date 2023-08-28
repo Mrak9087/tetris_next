@@ -1,7 +1,4 @@
-import React, { useEffect, useState } from "react";
-import Cell from "../Cell";
-import { infoStage } from "@/helpers/helpers";
-import InfoStage from "./InfoStage";
+import React from "react";
 import CanvasNextFigure from "../CanvasNextFigure";
 
 interface IInfo {

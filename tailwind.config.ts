@@ -20,6 +20,15 @@ const config: Config = {
       },
       gridTemplateColumns:{
         "4x": "repeat(4, calc(4vw/3))"
+      },
+      keyframes: {
+        ldsDualRing: {
+          '0%':{transform: 'rotate(0deg)'},
+          '100%':{transform: 'rotate(360deg)'},
+        }
+      },
+      animation: {
+        ldsDualRing: 'ldsDualRing 1.2s linear infinite',
       }
     },
   },

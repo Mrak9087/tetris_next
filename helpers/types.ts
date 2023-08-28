@@ -4,3 +4,9 @@ export type TPlayer = {
   nextFigure: number[][] | null;
   isCollision: boolean;
 };
+
+export type TLink = {
+  id: number;
+  href: string;
+  caption: string;
+};
