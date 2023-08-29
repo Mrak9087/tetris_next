@@ -39,7 +39,7 @@ export const ControlsImg: TImage[] = [
   },
   {
     id: 4,
-    src: ArrowUp,
+    src: ArrowLeft,
     alt: "Стрелка влево",
     caption: "Движение влево",
   },
