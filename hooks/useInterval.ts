@@ -18,10 +18,8 @@ export function useInterval(callback: () => void, delay: number | null) {
       idTimeout.current = setTimeout(tick,delay)
     }
 
-    // const id = setInterval(() => savedCallback.current(), delay)
     idTimeout.current = setTimeout(tick,delay)
 
-    // return () => clearInterval(id)
     return () => clearTimeout(idTimeout.current)
   }, [delay])
 }

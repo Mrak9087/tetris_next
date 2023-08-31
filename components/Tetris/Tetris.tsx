@@ -97,6 +97,9 @@ const Tetris = () => {
           <ButtonStart callback={startGame} />
         </aside>
       </TetrisWrapper>
+      <div className="flex sm:hidden w-full justify-center items-center min-h-screen text-white text-base font-bold text-center">
+        Данный размер экрана не поддерживается
+      </div>
     </div>
   );
 };
