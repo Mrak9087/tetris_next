@@ -61,8 +61,11 @@ export const usePlayer = () => {
       const copyPlayer = JSON.parse(JSON.stringify(player));
       copyPlayer.figure = rotate(copyPlayer.figure);
       if (!checkCollision(stage, copyPlayer, 0, 0)) {
-        let moveX = (copyPlayer.pos.x + copyPlayer.figure[0].length) - stage[0].length
-        copyPlayer.pos.x -= moveX; 
+        let moveX = (copyPlayer.pos.x + copyPlayer.figure[0].length);
+        if (moveX >= stage[0].length){
+          moveX -= stage[0].length
+          copyPlayer.pos.x -= moveX; 
+        }
       }
       if  (checkCollision(stage, copyPlayer, 0, 0)){
         setPlayer(copyPlayer);
