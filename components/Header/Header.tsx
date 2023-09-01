@@ -15,6 +15,7 @@ const Header = ({ links }: IHeader) => {
             key={item.id}
             href={item.href}
             scroll={false}
+            prefetch={false}
             className="hover:underline tracking-wider px-5 py-2 bg-gray-400 rounded-t-xl"
           >
             {item.caption}
