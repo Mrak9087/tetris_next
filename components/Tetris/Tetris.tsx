@@ -26,7 +26,7 @@ const Tetris = () => {
     setLevel(0);
     setRows(0);
     setDropTime(1000);
-    resetPlayer();
+    resetPlayer(null);
     setGameOver(false);
   };
 

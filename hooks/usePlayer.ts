@@ -22,15 +22,14 @@ export const usePlayer = () => {
       }));
     };
   
-    const resetPlayer = () => {
-      setPlayer((prev) => {
-        return {
+    const resetPlayer = (prevPlayer:TPlayer|null) => {
+      setPlayer( {
           pos: { x: Math.floor(VIEW_WIDTH / 2 - 1), y: 0 },
-          figure: prev.nextFigure,
+          figure: prevPlayer ? prevPlayer.nextFigure : getRandomTetromino(),
           nextFigure:getRandomTetromino(),
           isCollision: false,
         }
-      });
+      );
     };
   
     const setCollision = () => {
